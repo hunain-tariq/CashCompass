@@ -1,0 +1,2 @@
+# CashCompass
+Smart Budget Tracker
