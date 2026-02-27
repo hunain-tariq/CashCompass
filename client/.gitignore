@@ -11,7 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
-
+.env
+.env.*.local
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +23,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Node modules inside client and server
+client/node_modules/
+server/node_modules/
+
+# React build folder
+client/build/
