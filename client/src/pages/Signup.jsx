@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -11,15 +12,20 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/signup", { name, email, password }).then((res) => {
+    axios.post("http://localhost:5000/signup", { name, email, password }).then((res) => {
         console.log(res.data)
+        toast.success("Signup successful!");  
         setName("");
         setEmail("");
         setPassword("");
         navigate("/login");
     }).catch((err) => {
       console.error("Signup failed:", err);
-
+      if (err.response.status === 400 ) {
+        toast.error("User Already Exists.");
+      } else {
+        toast.error("Signup failed. Please try again.");
+      }
     });
    
   };

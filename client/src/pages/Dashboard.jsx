@@ -44,7 +44,7 @@ const Dashboard = () => {
 
           <div className="bg-slate-900 p-6 rounded-lg w-70 h-32 border border-white/10">
             <div className="flex items-center justify-between">
-              <h3>Total Balance</h3>
+              <h3>Spendable Balance</h3>
               <FaWallet className="text-green-400 text-xl" />
             </div>
             <p className="text-2xl font-bold mt-4">{"\u20A8"} 4,500</p>
@@ -64,7 +64,7 @@ const Dashboard = () => {
             </div>
             <p className="text-2xl font-bold mt-4">{"\u20A8"} 1,500</p>
           </div>
-          <div className="bg-slate-900 p-6 rounded-lg w-70 h-32 border border-white/10">
+          <div className="bg-slate-900 p-6 rounded-lg md:w-68 w-70 h-32 border border-white/10">
             <div className="flex items-center justify-between">
               <h3>Savings</h3>
               <FaPiggyBank className="text-yellow-400 text-xl" />
@@ -75,26 +75,55 @@ const Dashboard = () => {
         </div>
 
         {/* second block   */}
-       <div className="mt-12 bg-slate-900 p-6 rounded-xl border border-white/10">
-          <h3 className="text-xl font-semibold mb-4">Monthly Overview</h3>
-          <div className="h-72 w-full flex items-center justify-center text-slate-500">
-            <ResponsiveContainer width="90%" height={300}>
-              <BarChart data={data}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                <XAxis dataKey="month" stroke="#cbd5e1" />
-                <YAxis stroke="#cbd5e1" />
-                <Tooltip />
-                <Legend />
+      <div className="mt-12 bg-slate-900 w-full p-4 md:p-6 rounded-xl border border-white/10">
+          <h3 className="text-lg md:text-xl font-semibold mb-4">
+            Monthly Overview
+          </h3>
 
-                <Bar dataKey="income" fill="#22c55e" radius={[6, 6, 0, 0]} />
-                <Bar dataKey="expense" fill="#ef4444" radius={[6, 6, 0, 0]} />
-                <Bar dataKey="savings" fill="#facc15" radius={[6, 6, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+          {/* Horizontal Scroll Wrapper */}
+          <div className="overflow-x-auto">
+            <div className="min-w-[750px] h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={data}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                  
+                  <XAxis
+                    dataKey="month"
+                    stroke="#cbd5e1"
+                    tick={{ fontSize: 12 }}
+                  />
+                  
+                  <YAxis
+                    stroke="#cbd5e1"
+                    tick={{ fontSize: 12 }}
+                  />
+                  
+                  <Tooltip />
+                  <Legend />
+
+                  <Bar
+                    dataKey="income"
+                    fill="#22c55e"
+                    barSize={14}
+                    radius={[6, 6, 0, 0]}
+                  />
+                  <Bar
+                    dataKey="expense"
+                    fill="#ef4444"
+                    barSize={14}
+                    radius={[6, 6, 0, 0]}
+                  />
+                  <Bar
+                    dataKey="savings"
+                    fill="#facc15"
+                    barSize={14}
+                    radius={[6, 6, 0, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </div>
-
-         
        
       
 

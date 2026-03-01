@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,13 +11,19 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("/login", { email, password }).then((res) => {
+    axios.post("http://localhost:5000/login", { email, password }).then((res) => {
         console.log(res.data)
+        toast.success("Login successful!");
         setEmail("");
         setPassword("");
         navigate("/dashboard");
     }).catch((err) => {
       console.error("Login failed:", err);
+      if (err.response.status === 400 ) {
+        toast.error("Invalid credentials.");
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
 
       
     });
