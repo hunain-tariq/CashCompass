@@ -1,10 +1,32 @@
+import axios from 'axios'
 import React, { useState } from 'react'
-import { FaChartBar, FaSignOutAlt, FaTachometerAlt, FaBars, FaTimes } from 'react-icons/fa'
+import { FaChartBar, FaSignOutAlt, FaTachometerAlt, FaBars, FaTimes, FaMoneyBillWave } from 'react-icons/fa'
 import { MdEventNote } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const navigate = useNavigate();
+     const handleLogout = async () => {
+    try {
+      await axios.post(
+        "http://localhost:5000/logout",
+        {}, // empty body
+        { withCredentials: true } // important for cookie
+      );
+
+      toast.success("Logged out successfully!");
+      // Optionally clear frontend user state here
+      // e.g., setUser(null);
+
+      // Redirect to login page
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+      toast.error("Logout failed!");
+    }
+  };
 
     return (
         <>
@@ -21,12 +43,15 @@ const Navbar = () => {
                     <Link to='/monthly-planner' className="flex items-center gap-2 text-lg text-slate-400 hover:text-green-400 hover:bg-slate-950 p-2 rounded transition">
                         <MdEventNote className="text-current" /> Monthly Planner
                     </Link>
+                    <Link to='/expense-tracker' className="flex items-center gap-2 text-lg text-slate-400 hover:text-green-400 hover:bg-slate-950 p-2 rounded transition">
+                        <FaMoneyBillWave  className="text-current" /> Expence Tracker
+                    </Link>
                     <Link className="flex items-center gap-2 text-lg text-slate-400 hover:text-green-400 hover:bg-slate-950 p-2 rounded transition">
                         <FaChartBar className="text-current" /> Reports
                     </Link>
-                    <Link className="flex items-center gap-2 text-lg text-slate-400 hover:text-red-400 hover:bg-slate-950 p-2 rounded transition">
+                    <button onClick={handleLogout} className="flex items-center cursor-pointer gap-2 text-lg text-slate-400 hover:text-red-400 hover:bg-slate-950 p-2 rounded transition">
                         <FaSignOutAlt className="text-current" /> Logout
-                    </Link>
+                    </button>
                 </nav>
             </aside>
 

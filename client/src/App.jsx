@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard'
 import MonthlyPlanner from './pages/MonthlyPlanner'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ExpenceTracker from './pages/ExpenceTracker'
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/monthly-planner' element={<MonthlyPlanner />} />
+        <Route path='/expense-tracker' element={<ExpenceTracker/>} />
     </Routes>
      <ToastContainer
         position="top-right"

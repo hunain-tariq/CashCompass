@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/login", { email, password }).then((res) => {
+    axios.post("http://localhost:5000/login", { email, password },{withCredentials:true}).then((res) => {
         console.log(res.data)
         toast.success("Login successful!");
         setEmail("");
