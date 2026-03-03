@@ -12,7 +12,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/signup", { name, email, password }).then((res) => {
+    axios.post(`${import.meta.env.VITE_API_URL}/signup`, { name, email, password }).then((res) => {
         console.log(res.data)
         toast.success("Signup successful!");  
         setName("");

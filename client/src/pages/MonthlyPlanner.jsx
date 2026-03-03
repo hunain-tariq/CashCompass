@@ -62,7 +62,7 @@ const handleform = async (e) => {
 
   const handlealreadysaved = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/alreadysaved", { aleadySaved: already }, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/alreadysaved`, { aleadySaved: already }, {
         withCredentials: true,
       });
       console.log(res.data);
@@ -76,7 +76,7 @@ const handleform = async (e) => {
 
   const fetchRecords = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/fetch-monthly-planner", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/fetch-monthly-planner`, {
         withCredentials: true,
       });
       setRecords(res.data);
