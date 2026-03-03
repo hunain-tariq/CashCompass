@@ -12,7 +12,8 @@ const app = express()
 //--------------------------- Middleware--------------------------
 app.use(cors({
     // origin: 'http://localhost:5173', 
-    origin: 'https://cash-compass-jm68dyruy-hunaintariq075-gmailcoms-projects.vercel.app/',  
+    // origin: 'https://cash-compass-jm68dyruy-hunaintariq075-gmailcoms-projects.vercel.app/',  
+    origin: process.env.client_url,
     credentials: true
 }))
 app.use(express.json())
@@ -20,10 +21,10 @@ app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 
 //--------------------------- Routes--------------------------
-// app.use('/', userRoutes);
-app.get("/", (req, res) => {
-  res.send("CashCompass Backend Running 🚀");
-});
+app.use('/', userRoutes);
+// app.get("/", (req, res) => {
+//   res.send("CashCompass Backend Running 🚀");
+// });
 
 
 // ---------------------- Connect to MongoDB-----------------------
