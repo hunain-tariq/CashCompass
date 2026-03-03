@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 const monthSchema = new mongoose.Schema({
   month:{
-        type:String,
-        required: true
+    type:String,
+    required: true
   } , 
 
   totalIncome: {
@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    aleadySaved: {
+        type: Number,
+        default: 0
     },
     months: [monthSchema]
 });

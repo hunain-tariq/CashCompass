@@ -1,10 +1,11 @@
+const dns = require('dns')
+dns.setServers(["1.1.1.1","8.8.8.8"])
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const userRoutes = require('./Router/userRouter');
-
 
 const app = express()
 
