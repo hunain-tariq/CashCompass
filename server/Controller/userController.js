@@ -40,7 +40,7 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
     const { email, password } = req.body;
-    document.title("hello") // This line is not valid in a Node.js environment and should be removed
+    console.log("hello") // This line is not valid in a Node.js environment and should be removed
     try {
         let user = await UserModel.findOne({ email });
         if (!user) {
