@@ -30,7 +30,7 @@ const Dashboard = () => {
     const fetchDashboard = async () => {
       try {
         // Fetch totals
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/dashboard-data`, { withCredentials: true });
+        const res = await axios.get('http://localhost:5000/dashboard-data', { withCredentials: true });
         setDashboardData({
           totalIncome: res.data.totalIncome,
           totalExpense: res.data.totalExpense,
@@ -40,7 +40,7 @@ const Dashboard = () => {
         });
 
         // Fetch months for chart
-        const monthsRes = await axios.get(`${import.meta.env.VITE_API_URL}/fetch-monthly-planner`, { withCredentials: true });
+        const monthsRes = await axios.get('http://localhost:5000/fetch-monthly-planner', { withCredentials: true });
 
         // Map to chart-friendly format
         const chartData = monthsRes.data.map(m => ({

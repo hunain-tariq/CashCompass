@@ -3,8 +3,7 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const inputClass =
-  "w-full rounded-md border border-white/20 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:ring-1 focus:ring-green-500 focus:border-green-500 outline-none transition";
+const inputClass = "w-full rounded-md border border-white/20 bg-white/5 px-4 py-2 text-sm text-white placeholder:text-white/50 focus:ring-1 focus:ring-green-500 focus:border-green-500 outline-none transition";
 
 const MonthlyPlanner = () => {
     const [records, setRecords] = useState([]);
@@ -62,7 +61,7 @@ const handleform = async (e) => {
 
   const handlealreadysaved = async () => {
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/alreadysaved`, { aleadySaved: already }, {
+      const res = await axios.post("http://localhost:5000/alreadysaved", { aleadySaved: already }, {
         withCredentials: true,
       });
       console.log(res.data);
@@ -76,7 +75,7 @@ const handleform = async (e) => {
 
   const fetchRecords = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/fetch-monthly-planner`, {
+      const res = await axios.get("http://localhost:5000/fetch-monthly-planner", {
         withCredentials: true,
       });
       setRecords(res.data);
