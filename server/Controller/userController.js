@@ -40,7 +40,6 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
     const { email, password } = req.body;
-    console.log("hello") // This line is not valid in a Node.js environment and should be removed
     try {
         let user = await UserModel.findOne({ email });
         if (!user) {
@@ -205,6 +204,7 @@ const alreadysaved = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };  
+
 
 
 
